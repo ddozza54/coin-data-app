@@ -1,9 +1,9 @@
 import React from "react";
 import { Categories, IToDo, toDoState } from "../atoms";
-import { useSetRecoilState } from "recoil";
+import { useRecoilState, useSetRecoilState } from "recoil";
 
 export default function ToDo({ text, category, id }: IToDo) {
-  const setToDos = useSetRecoilState(toDoState);
+  const [toDos, setToDos] = useRecoilState(toDoState);
   const onClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     const {
       currentTarget: { name },
@@ -18,6 +18,9 @@ export default function ToDo({ text, category, id }: IToDo) {
         ...oldToDos.slice(targetIndex + 1),
       ];
     });
+  };
+  const handleDelete = () => {
+    setToDos((oldToDos) => oldToDos.filter((todo) => todo.id !== id));
   };
   return (
     <li>
@@ -37,6 +40,7 @@ export default function ToDo({ text, category, id }: IToDo) {
           Done
         </button>
       )}
+      <button onClick={handleDelete}>Delete</button>
     </li>
   );
 }
