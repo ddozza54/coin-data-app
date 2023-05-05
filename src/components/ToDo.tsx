@@ -4,23 +4,28 @@ import { useRecoilState, useSetRecoilState } from "recoil";
 
 export default function ToDo({ text, category, id }: IToDo) {
   const [toDos, setToDos] = useRecoilState(toDoState);
+  const TODOS = "toDos";
+
   const onClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     const {
       currentTarget: { name },
     } = event;
     setToDos((oldToDos) => {
       const targetIndex = oldToDos.findIndex((toDo) => toDo.id === id);
-      const oldToDo = oldToDos[targetIndex];
       const newToDo = { text, id, category: name as any };
-      return [
+      localStorage.setItem(TODOS, JSON.stringify(toDos));
+      const newToDos = [
         ...oldToDos.slice(0, targetIndex),
         newToDo,
         ...oldToDos.slice(targetIndex + 1),
       ];
+      localStorage.setItem(TODOS, JSON.stringify(newToDos));
+      return newToDos;
     });
   };
   const handleDelete = () => {
     setToDos((oldToDos) => oldToDos.filter((todo) => todo.id !== id));
+    localStorage.setItem(TODOS, JSON.stringify(toDos));
   };
   return (
     <li>
