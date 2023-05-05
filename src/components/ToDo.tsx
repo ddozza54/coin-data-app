@@ -25,7 +25,10 @@ export default function ToDo({ text, category, id }: IToDo) {
   };
   const handleDelete = () => {
     setToDos((oldToDos) => oldToDos.filter((todo) => todo.id !== id));
-    localStorage.setItem(TODOS, JSON.stringify(toDos));
+    localStorage.setItem(
+      TODOS,
+      JSON.stringify(toDos.filter((todo) => todo.id !== id))
+    );
   };
   return (
     <li>

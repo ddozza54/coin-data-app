@@ -4,16 +4,11 @@ import CreateToDo from "./CreateToDo";
 import { Categories, categoryState, toDoSelector, toDoState } from "../atoms";
 import ToDo from "./ToDo";
 
-let local = localStorage.getItem("toDos");
 
 export default function ToDoList() {
   const toDos = useRecoilValue(toDoSelector);
   const setToDos = useSetRecoilState(toDoState);
   const [category, setCategory] = useRecoilState(categoryState);
-
-  useEffect(() => {
-    local && setToDos(JSON.parse(local as any));
-  }, []);
 
   const onInput = (event: React.FormEvent<HTMLSelectElement>) => {
     setCategory(event.currentTarget.value as any);
