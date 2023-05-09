@@ -1,33 +1,18 @@
 import { atom, selector } from "recoil";
 
-let local = JSON.parse(localStorage.getItem("toDos") as any);
-
-export enum Categories {
-  "TO_DO" = "TO_DO",
-  "DOING" = "DOING",
-  "DONE" = "DONE",
-}
-export interface IToDo {
-  text: string;
-  id: number;
-  category: Categories;
-}
-
-export const categoryState = atom<Categories>({
-  key: "category",
-  default: Categories.TO_DO,
+export const minuteState = atom({
+  key: "minutes",
+  default: 0,
 });
 
-export const toDoState = atom<IToDo[]>({
-  key: "toDo",
-  default: local ? local : [],
-});
-
-export const toDoSelector = selector({
-  key: "toDoSelector",
+export const hourSelector = selector<number>({
+  key: "hours",
   get: ({ get }) => {
-    const toDos = get(toDoState); // get Fn으로 atom state 를 가져올 수 있다.
-    const categoty = get(categoryState);
-    return toDos.filter((todo) => todo.category === categoty);
+    const minutes = get(minuteState);
+    return minutes / 60;
+  },
+  set: ({ set }, newValue) => {
+    const minutes = Number(newValue) * 60;
+    set(minuteState, minutes);
   },
 });
