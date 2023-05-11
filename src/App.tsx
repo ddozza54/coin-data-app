@@ -1,5 +1,6 @@
-import { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 import Router from "./Router";
+import TopBar from "./TopBar";
 
 const GlobalStyle = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400&display=swap');
@@ -68,6 +69,7 @@ function App() {
   return (
     <>
       <GlobalStyle />
+      <TopBar />
       <Router />
     </>
   );

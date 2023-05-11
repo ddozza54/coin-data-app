@@ -27,6 +27,7 @@ const Container = styled.div`
   padding: 0px 20px;
   max-width: 480px;
   margin: 0 auto;
+  position: relative;
 `;
 
 const Header = styled.header`
@@ -40,6 +41,8 @@ const Header = styled.header`
 const ButtonWrapper = styled.div`
   display: flex;
   width: 100%;
+  position: absolute;
+  top: -45px;
 `;
 
 const BackButton = styled.div`
