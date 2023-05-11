@@ -32,8 +32,21 @@ const Container = styled.div`
 const Header = styled.header`
   height: 15vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+`;
+
+const ButtonWrapper = styled.div`
+  display: flex;
+  width: 100%;
+`;
+
+const BackButton = styled.div`
+  text-align: center;
+  padding: 10px;
+  font-size: larger;
+  font-weight: 600;
 `;
 
 const Overview = styled.div`
@@ -166,6 +179,11 @@ function Coin() {
         </title>
       </Helmet>
       <Header>
+        <ButtonWrapper>
+          <BackButton>
+            <Link to={`/`}>&larr;</Link>
+          </BackButton>
+        </ButtonWrapper>
         <Title>
           {state?.name ? state.name : loading ? "Loading..." : infoData?.name}
         </Title>

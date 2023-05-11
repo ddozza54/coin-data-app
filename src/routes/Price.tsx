@@ -24,7 +24,6 @@ export default function Price({ coinId }: PriceProps) {
   const candelData = data?.map((v) => {
     return { x: v.time_open, y: [v.open, v.high, v.low, v.close] };
   });
-  console.log(candelData);
   return (
     <div>
       {isLoading ? (
