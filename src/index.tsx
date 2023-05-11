@@ -1,32 +1,19 @@
-// import React from "react";
-// import ReactDOM from "react-dom/client";
-// import App from "./App";
-// import { QueryClient, QueryClientProvider } from "react-query";
-// import { ThemeProvider } from "styled-components";
-// import { RecoilRoot } from "recoil";
-// import { darkTheme, lightTheme } from "./theme";
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { createRoot } from "react-dom/client";
+import App from "./App";
+import { QueryClient, QueryClientProvider } from "react-query";
+import { ThemeProvider } from "styled-components";
+import { RecoilRoot } from "recoil";
+import { theme } from "./theme";
 
+const rootElement = document.getElementById("root");
+const root = createRoot(rootElement as any);
 // const root = ReactDOM.createRoot(
 //   document.getElementById("root") as HTMLElement
 // );
 
-// const queryClient = new QueryClient();
-
-// root.render(
-//   <div>
-//     <RecoilRoot>
-//       <ThemeProvider theme={lightTheme}>
-//         <App />
-//       </ThemeProvider>
-//     </RecoilRoot>
-//   </div>
-// );
-
-import React from "react";
-import { createRoot } from "react-dom/client";
-import { ThemeProvider } from "styled-components";
-import App from "./App";
-import { theme } from "./theme";
+const queryClient = new QueryClient();
 
 // import * as ReactDOM from 'react-dom/client';
 // import reportWebVitals from './reportWebVitals';
@@ -34,13 +21,12 @@ import { theme } from "./theme";
 // root.render(<App />);
 // reportWebVitals();
 
-const rootElement = document.getElementById("root");
-const root = createRoot(rootElement as any);
-
 root.render(
   <div>
-    <ThemeProvider theme={theme}>
-      <App />
-    </ThemeProvider>
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider theme={theme}>
+        <App />
+      </ThemeProvider>
+    </QueryClientProvider>
   </div>
 );
