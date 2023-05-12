@@ -16,3 +16,8 @@ export const hourSelector = selector<number>({
     set(minuteState, minutes);
   },
 });
+
+export const isDarkAtom = atom({
+  key: "isDark",
+  default: true,
+});
