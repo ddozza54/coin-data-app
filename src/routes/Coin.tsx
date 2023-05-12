@@ -36,20 +36,23 @@ const Header = styled.header`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: relative;
 `;
 
 const ButtonWrapper = styled.div`
   display: flex;
-  width: 100%;
   position: absolute;
-  top: -45px;
+  top: -43px;
+  left: 0px;
 `;
 
 const BackButton = styled.div`
   text-align: center;
-  padding: 10px;
+  padding: 5px 10px;
   font-size: larger;
   font-weight: 600;
+  background-color: ${(props) => props.theme.bgColor};
+  border-radius: 10px;
 `;
 
 const Overview = styled.div`

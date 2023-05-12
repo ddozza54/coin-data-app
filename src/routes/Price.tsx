@@ -13,11 +13,14 @@ const Wrapper = styled.div`
   gap: 5px;
 `;
 
-const DataBox = styled.div``;
+const DataBox = styled.div`
+  background-color: whitesmoke;
+  border-radius: 10px;
+`;
 
 const Volume = styled.div`
-  grid-column: 1 -1;
-  grid-row: 1 2;
+  grid-column: 1/ -1;
+  grid-row: 1/ 2;
   background-color: whitesmoke;
   border-radius: 10px;
 `;

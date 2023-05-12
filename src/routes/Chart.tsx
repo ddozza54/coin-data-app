@@ -21,15 +21,10 @@ interface ChartProps {
 }
 
 export default function Chart({ coinId }: ChartProps) {
-  const isDark = useRecoilValue(isDarkAtom);
-  const { isLoading, data } = useQuery<IHistorical[]>(
-    ["ohlcv", coinId],
-    () => fetchCoinHistory(coinId),
-    {
-      refetchInterval: 10000,
-    }
+  const { isLoading, data } = useQuery<IHistorical[]>(["ohlcv", coinId], () =>
+    fetchCoinHistory(coinId)
   );
-  const candelData = data?.map((v) => {
+  let candelData = data?.map((v) => {
     return { x: v.time_open, y: [v.open, v.high, v.low, v.close] };
   });
   return (
@@ -53,10 +48,9 @@ export default function Chart({ coinId }: ChartProps) {
               height: 300,
               width: 500,
               background: "transparent",
-            },
-            title: {
-              text: "CandleStick Chart",
-              align: "left",
+              toolbar: {
+                show: false,
+              },
             },
             xaxis: {
               type: "datetime",
