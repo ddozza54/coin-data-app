@@ -1,0 +1,10 @@
+{
+  "files": {
+    "main.js": "/coin-data-app/static/js/main.cbaf976a.js",
+    "index.html": "/coin-data-app/index.html",
+    "main.cbaf976a.js.map": "/coin-data-app/static/js/main.cbaf976a.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.cbaf976a.js"
+  ]
+}
